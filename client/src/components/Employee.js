@@ -6,7 +6,8 @@ class Employee extends React.Component{
         this.state={data:{}}
     }
     async componentDidMount(){
-        const response = await axios.get("http://localhost:5000/user/2");
+        const id = localStorage.getItem('id');
+        const response = await axios.get(`http://localhost:5000/user/${id}`);
         this.setState({data: response.data.data})
         console.log(this.state.data)
     }

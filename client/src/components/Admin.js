@@ -24,6 +24,7 @@ class Admin extends React.Component{
                                     <th>Name</th>
                                     <th>Password</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                 </tr>
                             </thead>
                             {data1.map((data)=>{
@@ -33,6 +34,7 @@ class Admin extends React.Component{
                                     <td>{data.name}</td>
                                     <td>{data.password}</td>
                                     <td>{data.email}</td>
+                                    <td>{data.role}</td>
                                 </tr>
                             </tbody>
                                 )

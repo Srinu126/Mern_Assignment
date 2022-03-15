@@ -12,17 +12,26 @@ function Login() {
     const [currentUser, setCurrentUser] = useState({});
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post("http://localhost:5000/login")
-        console.log("i am the response", response.data.data[0].role)
-        if (response.data.data[0].role === 'EMPLOYEE') {
-            let path = `employee`;
-            navigate(path);
-
+        const data={email: email, password: password}
+        const response = await axios.post("http://localhost:5000/login", data)
+        if(response.data.data.length>0){
+            if (response.data.data[0].role === 'EMPLOYEE') {
+                const id = response.data.data[0].id;
+                localStorage.setItem("id", id)
+                let path = `employee`;
+                navigate(path);
+    
+            } else {
+                let path = `admin`;
+                navigate(path);
+    
+            }
+ 
         } else {
-            let path = `admin`;
-            navigate(path);
-
+            let path=`invalid`;
+            navigate(path)
         }
+        
     }
     return (
         <>
